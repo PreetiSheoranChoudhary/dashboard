@@ -1,0 +1,17 @@
+// Your component
+
+export async function getStaticProps() {
+  const filePath = path.join(process.cwd(), 'data.json'); // Replace with your file path
+  const fileData = await fs.readFile(filePath, 'utf8');
+  const jsonData = JSON.parse(fileData);
+
+  return {
+    props: {
+      data: jsonData,
+    },
+  };
+}
+
+function MyComponent({ data }) {
+  // ... use data
+}
